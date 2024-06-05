@@ -42,11 +42,25 @@ type Result<T, E = Error> = std::result::Result<T, E>;
 /// }
 /// ```
 pub struct Serializer<W> {
+    config: SerializerConfig,
     depth: usize,
     state: State,
     emitter: Emitter<'static>,
     writer: PhantomData<W>,
-    tag_unit_variants: bool,
+}
+
+/// A structure for configuring the Serializer.
+pub struct SerializerConfig {
+    /// When set to `true`, all unit variants will be serialized as tags, i.e. `!Unit` inastead of `Unit`.
+    pub tag_unit_variants: bool,
+}
+
+impl Default for SerializerConfig {
+    fn default() -> Self {
+        Self {
+            tag_unit_variants: Default::default(),
+        }
+    }
 }
 
 enum State {
@@ -63,22 +77,22 @@ where
 {
     /// Creates a new YAML serializer.
     pub fn new(writer: W) -> Self {
-        Self::new_with_settings(writer, false)
+        Self::new_with_config(writer, Default::default())
     }
 
     /// Creates a new YAML serializer with settings.
-    pub fn new_with_settings(writer: W, tag_unit_variants: bool) -> Self {
+    pub fn new_with_config(writer: W, config: SerializerConfig) -> Self {
         let mut emitter = Emitter::new({
             let writer = Box::new(writer);
             unsafe { mem::transmute::<Box<dyn io::Write>, Box<dyn io::Write>>(writer) }
         });
         emitter.emit(Event::StreamStart).unwrap();
         Serializer {
+            config,
             depth: 0,
             state: State::NothingInParticular,
             emitter,
             writer: PhantomData,
-            tag_unit_variants,
         }
     }
 
@@ -400,7 +414,7 @@ where
         _variant_index: u32,
         variant: &'static str,
     ) -> Result<()> {
-        if !self.tag_unit_variants {
+        if !self.config.tag_unit_variants {
             self.serialize_str(variant)
         } else {
             if let State::FoundTag(_) = self.state {
