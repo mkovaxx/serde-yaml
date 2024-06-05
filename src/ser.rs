@@ -73,7 +73,7 @@ where
         Self::new_with_config(writer, SerializerConfig::default())
     }
 
-    /// Creates a new YAML serializer with settings.
+    /// Creates a new YAML serializer with a configuration.
     pub fn new_with_config(writer: W, config: SerializerConfig) -> Self {
         let mut emitter = Emitter::new({
             let writer = Box::new(writer);
