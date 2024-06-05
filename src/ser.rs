@@ -50,17 +50,10 @@ pub struct Serializer<W> {
 }
 
 /// A structure for configuring the Serializer.
+#[derive(Debug, Default)]
 pub struct SerializerConfig {
     /// When set to `true`, all unit variants will be serialized as tags, i.e. `!Unit` inastead of `Unit`.
     pub tag_unit_variants: bool,
-}
-
-impl Default for SerializerConfig {
-    fn default() -> Self {
-        Self {
-            tag_unit_variants: Default::default(),
-        }
-    }
 }
 
 enum State {
@@ -77,7 +70,7 @@ where
 {
     /// Creates a new YAML serializer.
     pub fn new(writer: W) -> Self {
-        Self::new_with_config(writer, Default::default())
+        Self::new_with_config(writer, SerializerConfig::default())
     }
 
     /// Creates a new YAML serializer with settings.
