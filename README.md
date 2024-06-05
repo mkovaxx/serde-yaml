@@ -1,13 +1,13 @@
-Serde YAML
-==========
+Serde YAML Extended
+===================
 
-[<img alt="github" src="https://img.shields.io/badge/github-dtolnay/serde--yaml-8da0cb?style=for-the-badge&labelColor=555555&logo=github" height="20">](https://github.com/dtolnay/serde-yaml)
-[<img alt="crates.io" src="https://img.shields.io/crates/v/serde_yaml.svg?style=for-the-badge&color=fc8d62&logo=rust" height="20">](https://crates.io/crates/serde_yaml)
-[<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-serde__yaml-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs" height="20">](https://docs.rs/serde_yaml)
-[<img alt="build status" src="https://img.shields.io/github/actions/workflow/status/dtolnay/serde-yaml/ci.yml?branch=master&style=for-the-badge" height="20">](https://github.com/dtolnay/serde-yaml/actions?query=branch%3Amaster)
+[<img alt="github" src="https://img.shields.io/badge/github-mkovaxx/serde--yaml--ext-8da0cb?style=for-the-badge&labelColor=555555&logo=github" height="20">](https://github.com/mkovaxx/serde-yaml-ext)
+[<img alt="crates.io" src="https://img.shields.io/crates/v/serde_yaml_ext.svg?style=for-the-badge&color=fc8d62&logo=rust" height="20">](https://crates.io/crates/serde_yaml_ext)
+[<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-serde__yaml__ext-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs" height="20">](https://docs.rs/serde_yaml_ext)
+[<img alt="build status" src="https://img.shields.io/github/actions/workflow/status/mkovaxx/serde-yaml-ext/ci.yml?branch=main&style=for-the-badge" height="20">](https://github.com/mkovaxx/serde-yaml-ext/actions?query=branch%3Amain)
 
 Rust library for using the [Serde] serialization framework with data in [YAML]
-file format. _(This project is no longer maintained.)_
+file format.
 
 [Serde]: https://github.com/serde-rs/serde
 [YAML]: https://yaml.org/
@@ -17,19 +17,19 @@ file format. _(This project is no longer maintained.)_
 ```toml
 [dependencies]
 serde = "1.0"
-serde_yaml = "0.9"
+serde_yaml_ext = "0.9"
 ```
 
 Release notes are available under [GitHub releases].
 
-[GitHub releases]: https://github.com/dtolnay/serde-yaml/releases
+[GitHub releases]: https://github.com/mkovaxx/serde-yaml-ext/releases
 
 ## Using Serde YAML
 
 [API documentation is available in rustdoc form][docs.rs] but the general idea
 is:
 
-[docs.rs]: https://docs.rs/serde_yaml
+[docs.rs]: https://docs.rs/serde_yaml_ext
 
 ```rust
 use std::collections::BTreeMap;
