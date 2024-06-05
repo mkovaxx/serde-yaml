@@ -46,6 +46,7 @@ pub struct Serializer<W> {
     state: State,
     emitter: Emitter<'static>,
     writer: PhantomData<W>,
+    tag_unit_variants: bool,
 }
 
 enum State {
@@ -62,6 +63,11 @@ where
 {
     /// Creates a new YAML serializer.
     pub fn new(writer: W) -> Self {
+        Self::new_with_settings(writer, false)
+    }
+
+    /// Creates a new YAML serializer with settings.
+    pub fn new_with_settings(writer: W, tag_unit_variants: bool) -> Self {
         let mut emitter = Emitter::new({
             let writer = Box::new(writer);
             unsafe { mem::transmute::<Box<dyn io::Write>, Box<dyn io::Write>>(writer) }
@@ -72,6 +78,7 @@ where
             state: State::NothingInParticular,
             emitter,
             writer: PhantomData,
+            tag_unit_variants,
         }
     }
 
@@ -393,7 +400,19 @@ where
         _variant_index: u32,
         variant: &'static str,
     ) -> Result<()> {
-        self.serialize_str(variant)
+        if !self.tag_unit_variants {
+            self.serialize_str(variant)
+        } else {
+            if let State::FoundTag(_) = self.state {
+                return Err(error::new(ErrorImpl::SerializeNestedEnum));
+            }
+            self.state = State::FoundTag(variant.to_owned());
+            self.emit_scalar(Scalar {
+                tag: None,
+                value: "",
+                style: ScalarStyle::Plain,
+            })
+        }
     }
 
     fn serialize_newtype_struct<T>(self, _name: &'static str, value: &T) -> Result<()>
