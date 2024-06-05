@@ -16,9 +16,9 @@ fn test_default_unit_variants() {
     Enum::Unit.serialize(&mut ser).unwrap();
     let output = String::from_utf8(buffer).unwrap();
 
-    let expected = indoc! { r"
+    let expected = indoc! {"
         Unit
-    " };
+    "};
 
     assert_eq!(output, expected);
 }
@@ -40,9 +40,9 @@ fn test_tag_unit_variants() {
     Enum::Unit.serialize(&mut ser).unwrap();
     let output = String::from_utf8(buffer).unwrap();
 
-    let expected = indoc! { r"
+    let expected = indoc! {"
         !Unit
-    " };
+    "};
 
     assert_eq!(output, expected);
 }
