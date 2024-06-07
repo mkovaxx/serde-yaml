@@ -1,7 +1,7 @@
 use indoc::indoc;
 use serde::Serialize;
 use serde_derive::Serialize;
-use serde_yaml::{Serializer, SerializerConfig};
+use serde_yaml_ok::{Serializer, SerializerConfig};
 
 #[test]
 fn test_default_unit_variants() {
