@@ -1,6 +1,6 @@
 [package]
 name = "serde_yaml_ok"
-version = "0.9.35"
+version = "0.9.36"
 authors = ["Mate Kovacs <mkovaxx@gmail.com>"]
 categories = ["encoding", "parser-implementations"]
 description = "YAML data format for Serde. It's OK."
