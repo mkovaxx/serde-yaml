@@ -14,7 +14,7 @@ env:
 
 jobs:
   pre_ci:
-    uses: dtolnay/.github/.github/workflows/pre_ci.yml@master
+    uses: mkovaxx/.github/.github/workflows/pre_ci.yml@master
 
   test:
     name: Rust ${{matrix.rust}}
@@ -28,7 +28,7 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@master
+      - uses: mkovaxx/rust-toolchain@master
         with:
           toolchain: ${{matrix.rust}}
       - name: Enable type layout randomization
@@ -47,8 +47,8 @@ jobs:
       RUSTDOCFLAGS: -Dwarnings
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@nightly
-      - uses: dtolnay/install@cargo-docs-rs
+      - uses: mkovaxx/rust-toolchain@nightly
+      - uses: mkovaxx/install@cargo-docs-rs
       - run: cargo docs-rs
 
   clippy:
@@ -58,7 +58,7 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@clippy
+      - uses: mkovaxx/rust-toolchain@clippy
       - run: cargo clippy --tests -- -Dclippy::all -Dclippy::pedantic
 
   miri:
@@ -69,7 +69,7 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@miri
+      - uses: mkovaxx/rust-toolchain@miri
       - run: cargo miri setup
       - run: cargo miri test
         env:
@@ -83,7 +83,7 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@nightly
+      - uses: mkovaxx/rust-toolchain@nightly
       - run: cargo generate-lockfile -Z minimal-versions
       - run: cargo check --locked
 
@@ -95,8 +95,8 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@nightly
-      - uses: dtolnay/install@cargo-fuzz
+      - uses: mkovaxx/rust-toolchain@nightly
+      - uses: mkovaxx/install@cargo-fuzz
       - run: cargo fuzz check
 
   outdated:
@@ -106,6 +106,6 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/install@cargo-outdated
+      - uses: mkovaxx/install@cargo-outdated
       - run: cargo outdated --workspace --exit-code 1
       - run: cargo outdated --manifest-path fuzz/Cargo.toml --exit-code 1
