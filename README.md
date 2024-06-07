@@ -1,10 +1,10 @@
 Serde YAML Extended
 ===================
 
-[<img alt="github" src="https://img.shields.io/badge/github-mkovaxx/serde--yaml--ext-8da0cb?style=for-the-badge&labelColor=555555&logo=github" height="20">](https://github.com/mkovaxx/serde-yaml-ext)
-[<img alt="crates.io" src="https://img.shields.io/crates/v/serde_yaml_ext.svg?style=for-the-badge&color=fc8d62&logo=rust" height="20">](https://crates.io/crates/serde_yaml_ext)
-[<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-serde__yaml__ext-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs" height="20">](https://docs.rs/serde_yaml_ext)
-[<img alt="build status" src="https://img.shields.io/github/actions/workflow/status/mkovaxx/serde-yaml-ext/ci.yml?branch=main&style=for-the-badge" height="20">](https://github.com/mkovaxx/serde-yaml-ext/actions?query=branch%3Amain)
+[<img alt="github" src="https://img.shields.io/badge/github-mkovaxx/serde--yaml--ok-8da0cb?style=for-the-badge&labelColor=555555&logo=github" height="20">](https://github.com/mkovaxx/serde-yaml-ok)
+[<img alt="crates.io" src="https://img.shields.io/crates/v/serde_yaml_ok.svg?style=for-the-badge&color=fc8d62&logo=rust" height="20">](https://crates.io/crates/serde_yaml_ok)
+[<img alt="docs.rs" src="https://img.shields.io/badge/docs.rs-serde__yaml__ok-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs" height="20">](https://docs.rs/serde_yaml_ok)
+[<img alt="build status" src="https://img.shields.io/github/actions/workflow/status/mkovaxx/serde-yaml-ok/ci.yml?branch=main&style=for-the-badge" height="20">](https://github.com/mkovaxx/serde-yaml-ok/actions?query=branch%3Amain)
 
 Rust library for using the [Serde] serialization framework with data in [YAML]
 file format.
@@ -17,19 +17,19 @@ file format.
 ```toml
 [dependencies]
 serde = "1.0"
-serde_yaml_ext = "0.9"
+serde_yaml_ok = "0.9"
 ```
 
 Release notes are available under [GitHub releases].
 
-[GitHub releases]: https://github.com/mkovaxx/serde-yaml-ext/releases
+[GitHub releases]: https://github.com/mkovaxx/serde-yaml-ok/releases
 
 ## Using Serde YAML
 
 [API documentation is available in rustdoc form][docs.rs] but the general idea
 is:
 
-[docs.rs]: https://docs.rs/serde_yaml_ext
+[docs.rs]: https://docs.rs/serde_yaml_ok
 
 ```rust
 use std::collections::BTreeMap;

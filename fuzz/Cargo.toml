@@ -1,5 +1,5 @@
 [package]
-name = "serde_yaml_ext-fuzz"
+name = "serde_yaml_ok-fuzz"
 version = "0.0.0"
 authors = ["Mate Kovacs <mkovaxx@gmail.com>"]
 edition = "2021"
