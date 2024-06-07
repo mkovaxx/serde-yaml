@@ -1,7 +1,7 @@
 [package]
-name = "serde_yaml-fuzz"
+name = "serde_yaml_ok-fuzz"
 version = "0.0.0"
-authors = ["David Tolnay <dtolnay@gmail.com>"]
+authors = ["Mate Kovacs <mkovaxx@gmail.com>"]
 edition = "2021"
 publish = false
 
@@ -10,7 +10,7 @@ cargo-fuzz = true
 
 [dependencies]
 libfuzzer-sys = "0.4"
-serde_yaml = { path = ".." }
+serde_yaml_ok = { path = ".." }
 
 [[bin]]
 name = "fuzz_from_slice"
